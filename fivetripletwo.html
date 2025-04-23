@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5222 Game - Play & Earn Real Cash</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Neon Light Glow Effect for Feature Box */
+        .feature-box {
+            padding: 20px;
+            background: #2d2d44;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 75, 43, 0.7);
+        }
+
+        .feature-box:hover {
+            box-shadow: 0 0 25px rgba(255, 75, 43, 1), 0 0 40px rgba(255, 75, 43, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Starry Universe Background */
+        .features {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .features::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2016/03/26/22/13/space-1275161_960_720.jpg') repeat;
+            animation: stars 50s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes stars {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
+            100% {
+                transform: translateX(1000px) translateY(1000px);
+            }
+        }
+
+
+
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Full height */
+            background: linear-gradient(to right, #ff00ff, #00ffff);
+            background-size: 200% 200%;
+            /* animation: neon 3s ease-in-out infinite alternate; */
+            z-index: -1;
+            /* Keeps it behind the content */
+        }
+
+        /* Hero container */
+        .container.hero {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        /* Main title */
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff4b2b;
+            text-shadow: 2px 2px 8px rgba(255, 75, 43, 0.7);
+        }
+
+        /* Subtitle */
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #ff4b2b;
+        }
+
+        /* Description */
+        .hero-description,
+        .hero-description-secondary {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Secondary description */
+        .hero-description-secondary {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            color: #ccc;
+        }
+
+        @keyframes neon {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .neon-button {
+            position: relative;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #ff4b2b;
+            border-radius: 50px;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .neon-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: #ff4b2b;
+            transition: all 0.4s;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .neon-button:hover:before {
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .neon-button:hover {
+            color: #ff4b2b;
+            box-shadow: 0 0 10px #ff4b2b, 0 0 20px #ff4b2b, 0 0 30px #ff4b2b;
+        }
+
+        .hero {
+            z-index: 2;
+            position: relative;
+            padding-top: 50px;
+            /* Add padding to ensure it's not touching the top */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: slideInFromTop 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0;
+            animation: fadeInText 2s ease-out 1s forwards;
+        }
+
+        .cta-button {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            background-color: #ff4b2b;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeInText 2s ease-out 2s forwards;
+        }
+
+        .cta-button:hover {
+            background-color: #ff416c;
+            transform: scale(1.1);
+        }
+
+        .features {
+            padding: 50px 20px;
+            background-color: #1c1c2b;
+        }
+
+        .feature-box {
+            padding: 20px;
+            background: #2d2d44;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonials {
+            padding: 50px 20px;
+            background-color: #28284a;
+        }
+
+        .testimonial-box {
+            background: #3a3a5d;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #12121d;
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Parallax Neon Light Background -->
+    <div class="parallax"></div>
+
+    <div class="container hero text-center">
+        <h1 class="hero-title">
+            Play. Earn. Win.
+        </h1>
+        <p class="hero-description-secondary">
+            Still riding a scooty with sticker mods and loud silencer like a rocket? 🧨<br>
+            Bro... time to modify your bank balance instead 💸 with <strong>5222 Game</strong> 🔥
+        </p>
+        <a href="https://invite.jj5222.com/?code=XKKWBCZ" class="btn neon-button mt-4">
+            Download Now & Start Earning💸
+        </a>
+    </div>
+
+
+
+    <div class="container features text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h4>🎮 Fun Games</h4>
+                    <p>Enjoy skill and chance-based games, all in one place.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h4>💰 Real Cash</h4>
+                    <p>Win actual money through gameplay and referrals.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h4>📱 Easy to Use</h4>
+                    <p>Quick signup and intuitive interface for all ages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container testimonials text-center">
+        <h2 class="mb-5">What Our Users Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-box">
+                    <img src="https://i.pravatar.cc/80?img=1" alt="Ban Ryntih" class="testimonial-img">
+                    <p>"5222 Game is my favorite app! I’ve earned real cash just by playing games during my free time.
+                        Highly recommended!"</p>
+                    <strong>- Ban Ryntih</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-box">
+                    <img src="https://i.pravatar.cc/80?img=2" alt="Iamon Kharsati" class="testimonial-img">
+                    <p>"I never believed I could make money this easily. Thank you 5222 Game for this opportunity!"</p>
+                    <strong>- Iamon Kharsati</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-box">
+                    <img src="https://i.pravatar.cc/80?img=3" alt="Lari Nongrum" class="testimonial-img">
+                    <p>"The games are fun and the rewards are real. I’ve already referred 10 of my friends!"</p>
+                    <strong>- Lari Nongrum</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+    <div class="container text-center my-5" id="download">
+        <h2>Get the 5222 Game Now!</h2>
+        <p>Click the button below to download the app and start earning instantly.</p>
+        <a href="https://invite.jj5222.com/?code=XKKWBCZ" class="btn neon-button mt-3" target="_blank">Download APK</a>
+    </div>
+    <div class="container text-center my-5"
+        style="background-color: #1c1c2b; padding: 50px; border-radius: 15px; box-shadow: 0 0 25px rgba(255, 75, 43, 0.5); color: #fff; position: relative; overflow: hidden;">
+
+        <h2
+            style="font-family: 'Russo One', sans-serif; color: #ff4b2b; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 1px; animation: fadeIn 2s ease-out;">
+            🎉 Limited-Time Bonus Zone</h2>
+        <p class="mt-3" style="font-size: 1.2rem; opacity: 0.8; animation: fadeInText 2s ease-out 1s forwards;">Hurry!
+            Grab exclusive rewards before the timer runs out!</p>
+
+        <!-- Countdown -->
+        <div id="countdown"
+            style="font-size: 3rem; margin: 20px 0; font-weight: bold; color: #00ffff; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; animation: pulse 1s infinite;">
+            00:30</div>
+
+        <!-- Referral Promo -->
+        <p
+            style="font-size: 1.3rem; font-weight: bold; color: #ff4b2b; animation: slideInFromBottom 1s ease-out 1.5s forwards;">
+            Use promo code
+            <span id="promo-code"
+                style="font-size: 1.5rem; font-weight: bold; color: #10e786; cursor: pointer; padding: 10px 20px; border-radius: 8px; border: 2px solid #ff4b2b; box-shadow: 0 0 10px #ff4b2b; transition: all 0.3s ease-in-out;">
+                XKKWBCZ
+            </span>
+            to earn instant bonus cash when signing up!
+        </p>
+
+        <!-- Referral Leaderboard -->
+        <h4 class="mt-4"
+            style="color: #00ffcc; font-size: 1.5rem; text-transform: uppercase; animation: fadeInText 2s ease-out 2s forwards;">
+            🏆 Top Referrers This Week</h4>
+        <ol class="text-start mx-auto" style="max-width: 400px; font-size: 1.2rem; color: #ddd;">
+            <li>🎖 Ban Ryntih - 45 Referrals</li>
+            <li>🎖 Iamon Kharsati - 38 Referrals</li>
+            <li>🎖 Lari Nongrum - 30 Referrals</li>
+        </ol>
+
+        <!-- Flashing Neon Effect for Bonus Promo -->
+        <div
+            style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: url('https://cdn.pixabay.com/photo/2018/09/03/00/33/galaxy-3640871_960_720.jpg') center/cover no-repeat; opacity: 0.3; animation: neonFlash 3s infinite;">
+        </div>
+
+    </div>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes neonFlash {
+            0% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        #promo-code:hover {
+            background-color: #2bff75;
+            color: #fff;
+            box-shadow: 0 0 15px #2bff92, 0 0 25px #2bff92;
+            transform: scale(1.05);
+        }
+    </style>
+
+    <script>
+        // Copy the promo code to clipboard when clicked
+        document.getElementById('promo-code').addEventListener('click', function () {
+            const promoCode = 'XKKWBCZ';
+            navigator.clipboard.writeText(promoCode).then(function () {
+                alert('Promo Code copied to clipboard: ' + promoCode);
+            }, function (err) {
+                alert('Failed to copy promo code: ' + err);
+            });
+        });
+    </script>
+
+
+    <script>
+        // Countdown Timer (set to 72 hours from page load)
+        const countdownElement = document.getElementById("countdown");
+        let countdownDate = new Date().getTime() + 72 * 60 * 60 * 1000;
+
+        const countdownFunction = setInterval(() => {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
+
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                countdownElement.innerHTML = "Offer Expired!";
+            }
+        }, 1000);
+    </script>
+
+    <!-- Pop-up Modal -->
+    <div id="downloadModal" class="modal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"
+                style="background-color: #1c1c2b; color: white; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 75, 43, 0.8);">
+                <div class="modal-header" style="border-bottom: 2px solid #ff4b2b;">
+                    <h5 class="modal-title" id="downloadModalLabel"
+                        style="font-family: 'Russo One', sans-serif; font-size: 1.6rem; color: #ff4b2b; text-transform: uppercase;">
+                        🎉 Limited-Time Bonus!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="color: #ff4b2b;"></button>
+                </div>
+                <div class="modal-body" style="padding: 30px;">
+                    <p style="font-size: 1.2rem; font-weight: bold; color: #ff4b2b;">Hurry! Download the 5222 Game now
+                        and get ₹100 instantly. Only for the next 24 hours!</p>
+                    <p style="font-size: 1rem; color: #ddd;">Don't miss your chance to start earning real cash while
+                        having fun!</p>
+                </div>
+                <div class="modal-footer" style="border-top: 2px solid #ff4b2b;">
+                    <a href="https://invite.jj5222.com/?code=XKKWBCZ" class="btn neon-button" target="_blank"
+                        style="font-size: 1.2rem; text-transform: uppercase; background-color: #ff4b2b; color: white; padding: 12px 30px; border-radius: 30px; transition: transform 0.3s, box-shadow 0.3s;">
+                        Download Now
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        style="background-color: #24243e; color: white;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trigger Modal Pop-up after 5 seconds -->
+    <script>
+        setTimeout(function () {
+            var myModal = new bootstrap.Modal(document.getElementById('downloadModal'));
+            myModal.show();
+        }, 5000); // 5 seconds delay before showing the pop-up
+    </script>
+
+    <!-- Neon Button Animation -->
+    <style>
+        .neon-button {
+            position: relative;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #ff4b2b;
+            border-radius: 30px;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 0 15px #ff4b2b, 0 0 30px #ff4b2b;
+        }
+
+        .neon-button:hover {
+            color: #ff4b2b;
+            box-shadow: 0 0 10px #ff4b2b, 0 0 20px #ff4b2b, 0 0 30px #ff4b2b;
+            transform: scale(1.1);
+        }
+
+        .modal {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <div class="container text-center my-5"
+        style="background: #1a1a2e; color: #fff; padding: 50px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);">
+        <h2 style="font-family: 'Russo One', sans-serif; color: #00ffff;">💰 Deposit & Start Playing</h2>
+        <p class="mt-3" style="font-size: 1.2rem;">Want to earn real money? First things first – you need to deposit a
+            small amount to unlock the games!</p>
+        <ul class="list-unstyled mt-4" style="font-size: 1.1rem;">
+            <li>✅ <strong>Minimum Deposit:</strong> ₹100</li>
+            <li>✅ <strong>Maximum Deposit:</strong> ₹5000</li>
+            <li>⚡ Instant top-up & quick start</li>
+        </ul>
+        <p class="mt-4" style="font-size: 1.2rem; color: #ff4b2b;">
+            Still thinking? Bro, instead of spending ₹300 on beer or <em>khor lih</em> from Karbalu, why not invest it
+            and earn it back (with profit)? 😎
+        </p>
+        <div class="container text-center my-5"
+            style="background-color: #2d2d44; color: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);">
+            <h2 style="font-family: 'Russo One', sans-serif; color: #ff4b2b;">😂 Karbalu Chronicles</h2>
+            <p style="font-size: 1.2rem;" class="mt-3">
+                Why go to Karbalu with an empty pocket and come back even emptier,
+                <br><strong>when you can play 5222 Game, earn first... and then drink like a boss? 🍻💸</strong>
+            </p>
+            <hr style="border-color: #ff4b2b;">
+            <p style="font-style: italic; font-size: 1.1rem;">
+                "Bro went to Karbalu with ₹500... came back with 2 empty cans and a life lesson. 😅" <br>
+                Be smart. Earn first, then cheers responsibly! 😉
+            </p>
+        </div>
+
+        <a href="https://invite.jj5222.com/?code=XKKWBCZ" class="btn neon-button mt-4">Deposit & Play Now</a>
+    </div>
+
+    <!-- Help & Support Section -->
+    <section class="container my-5 p-4 bg-dark text-white rounded shadow">
+        <h2 class="text-warning mb-3">🆘 Help & Support - Nimbo</h2>
+        <p>Welcome to the support center. If you face any issues while using the app, we’re here to help!</p>
+
+        <h5 class="mt-4 text-light">📧 Contact Email:</h5>
+        <p>
+            Reach out to us at <a href="mailto:programmerproject22@gmail.com"
+                class="text-warning">programmerproject22@gmail.com</a><br>
+            We usually respond within <strong>24 hours</strong>.
+        </p>
+
+        <h5 class="mt-4 text-light">🔍 Common Issues:</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-dark text-white border-bottom">💰 Withdrawal or deposit not working</li>
+            <li class="list-group-item bg-dark text-white border-bottom">🎮 Game not loading or showing errors</li>
+            <li class="list-group-item bg-dark text-white border-bottom">💸 Bonus or spin rewards not received</li>
+            <li class="list-group-item bg-dark text-white border-bottom">👥 Referral issues or missing bonuses</li>
+            <li class="list-group-item bg-dark text-white">❓ Any other app-related queries</li>
+        </ul>
+
+        <div class="mt-4">
+            <a href="mailto:programmerproject22@gmail.com" class="btn btn-warning">
+              Contact Us Now
+            </a>
+          </div>
+          
+    </section>
+
+    <footer>
+        <p>&copy; 2025 5222 Game Hub. All rights reserved. Lovingly crafted in a quiet hill village with passion and
+            creativity.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
